@@ -30,9 +30,7 @@ public class WarholFilter extends Filter
      * @param  image  The image to be changed by this filter.
      */
     public void apply(OFImage image)
-    {
-        img.makeSmaller();
-        
+    {   
         int height = image.getHeight();
         int width = image.getWidth();
         for(int y = 0; y < height; y++) {
@@ -61,5 +59,6 @@ public class WarholFilter extends Filter
                 image.setPixel(x, y, new Color(redScale, greenScale, blueScale));
             }
         }
+                img.makeSmaller();
     }
 }
