@@ -36,29 +36,8 @@ public class WarholFilter extends Filter
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++) 
             {
-                Color pixel = image.getPixel(x, y);
                 
-                int redScale = pixel.getRed() + 25;
-                if (redScale >= 255)
-                {
-                    redScale = 255;
-                }
-
-                int greenScale = pixel.getGreen() + 25;
-                if (greenScale >= 255)
-                {
-                    greenScale = 255;
-                }
-
-                int blueScale = pixel.getBlue() + 25;
-                if (blueScale >= 255)
-                {
-                    blueScale = 255;
-                }
-
-                image.setPixel(x, y, new Color(redScale, greenScale, blueScale));
             }
         }
-                img.makeSmaller();
     }
 }
