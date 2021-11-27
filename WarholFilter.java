@@ -32,7 +32,7 @@ public class WarholFilter extends Filter
     public void apply(OFImage image)
     {
         img.makeSmaller();
-        img.makeSmaller();
+        
         int height = image.getHeight();
         int width = image.getWidth();
         for(int y = 0; y < height; y++) {
