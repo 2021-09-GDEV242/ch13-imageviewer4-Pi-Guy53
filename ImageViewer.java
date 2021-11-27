@@ -177,7 +177,7 @@ public class ImageViewer
     /**
      * Make the current picture smaller.
      */
-    private void makeSmaller()
+    public void makeSmaller()
     {
         if(currentImage != null) {
             // create new image with double size
@@ -252,7 +252,9 @@ public class ImageViewer
         filterList.add(new BlueChannelFilter("Blue Channel"));
         filterList.add(new RedTintFilter("Red Tint"));
         filterList.add(new GreenTintFilter("Green Tint"));
-        filterList.add(new BlueTintFilter("Blue Tint"));        
+        filterList.add(new BlueTintFilter("Blue Tint"));
+        filterList.add(new WarholFilter("Warhol", this));
+        
         return filterList;
     }
     
