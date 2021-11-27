@@ -8,7 +8,6 @@ import java.awt.Color;
  */
 public class WarholFilter extends Filter
 {
-    private ImageViewer img;
     /**
      * Sets the display name of this filter
      * @param name The name of the filter.
@@ -16,12 +15,6 @@ public class WarholFilter extends Filter
     public WarholFilter(String name)
     {
         super(name);
-    }
-
-    public WarholFilter(String name, ImageViewer ref)
-    {
-        super(name);
-        img = ref;
     }
 
     /**
@@ -33,10 +26,33 @@ public class WarholFilter extends Filter
     {   
         int height = image.getHeight();
         int width = image.getWidth();
-        for(int y = 0; y < height; y++) {
-            for(int x = 0; x < width; x++) 
+        OFImage newImage = image;
+
+        for(int y = 0; y < height / 2; y++) {
+            for(int x = 0; x < width / 2; x++) 
             {
-                
+                newImage.setPixel(x, y, image.getPixel(x * 2, y * 2));
+            }
+        }
+
+        for(int y = 0; y < height / 2; y++) {
+            for(int x = 0; x < width / 2; x++) 
+            {
+                newImage.setPixel(x + (width / 2), y, image.getPixel(x, y));
+            }
+        }
+
+        for(int y = 0; y < height / 2; y++) {
+            for(int x = 0; x < width / 2; x++) 
+            {
+                newImage.setPixel(x, y + (height / 2), image.getPixel(x, y));
+            }
+        }
+
+        for(int y = 0; y < height / 2; y++) {
+            for(int x = 0; x < width / 2; x++) 
+            {
+                newImage.setPixel(x + (width / 2), y + (height / 2), image.getPixel(x, y));
             }
         }
     }
