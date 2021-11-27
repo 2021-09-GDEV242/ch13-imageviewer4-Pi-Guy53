@@ -38,21 +38,41 @@ public class WarholFilter extends Filter
         for(int y = 0; y < height / 2; y++) {
             for(int x = 0; x < width / 2; x++) 
             {
-                newImage.setPixel(x + (width / 2), y, image.getPixel(x, y));
+                Color pixel = image.getPixel(x, y);
+                int redScale = pixel.getRed() + 45;
+                if (redScale >= 255)
+                {
+                    redScale = 255;
+                }
+                newImage.setPixel(x + (width / 2), y, new Color(redScale, pixel.getGreen(), pixel.getBlue()));
             }
         }
 
         for(int y = 0; y < height / 2; y++) {
             for(int x = 0; x < width / 2; x++) 
             {
-                newImage.setPixel(x, y + (height / 2), image.getPixel(x, y));
+                Color pixel = image.getPixel(x, y);
+                int greenScale = pixel.getGreen() + 45;
+                if (greenScale >= 255)
+                {
+                    greenScale = 255;
+                }
+
+                newImage.setPixel(x, y + (height / 2), new Color(pixel.getRed(), greenScale, pixel.getBlue()));
             }
         }
 
         for(int y = 0; y < height / 2; y++) {
             for(int x = 0; x < width / 2; x++) 
             {
-                newImage.setPixel(x + (width / 2), y + (height / 2), image.getPixel(x, y));
+                Color pixel = image.getPixel(x, y);
+                int blueScale = pixel.getBlue() + 45;
+                if (blueScale >= 255)
+                {
+                    blueScale = 255;
+                }
+
+                newImage.setPixel(x + (width / 2), y + (height / 2), new Color(pixel.getRed(), pixel.getGreen(), blueScale));
             }
         }
     }
