@@ -1,18 +1,18 @@
 import java.awt.Color;
 
 /**
- * Applies a filter to make the picute look like a Warhol image
+ * Applies a filter to make the picute look like a Warhol image with flipped images
  *
  * @author Mihail Vaporakis
  * @version 2021-11-17
  */
-public class WarholFilter extends Filter
+public class FlippedWarholFilter extends Filter
 {
     /**
      * Sets the display name of this filter
      * @param name The name of the filter.
      */
-    public WarholFilter(String name)
+    public FlippedWarholFilter(String name)
     {
         super(name);
     }
@@ -44,7 +44,7 @@ public class WarholFilter extends Filter
                 {
                     redScale = 255;
                 }
-                newImage.setPixel(x + (width / 2), y, new Color(redScale, pixel.getGreen(), pixel.getBlue()));
+                newImage.setPixel((-x + (width / 2)) + (width / 2) -1, y, new Color(redScale, pixel.getGreen(), pixel.getBlue()));
             }
         }
 
@@ -58,7 +58,7 @@ public class WarholFilter extends Filter
                     greenScale = 255;
                 }
 
-                newImage.setPixel(x, y + (height / 2), new Color(pixel.getRed(), greenScale, pixel.getBlue()));
+                newImage.setPixel(x, (-y - (height / 2)) + (height + (height / 2) - 1), new Color(pixel.getRed(), greenScale, pixel.getBlue()));
             }
         }
 
@@ -72,7 +72,7 @@ public class WarholFilter extends Filter
                     blueScale = 255;
                 }
 
-                newImage.setPixel(x + (width / 2), y + (height / 2), new Color(pixel.getRed(), pixel.getGreen(), blueScale));
+                newImage.setPixel((-x + (width / 2)) + (width / 2) -1, (-y - (height / 2)) + (height + (height / 2) - 1), new Color(pixel.getRed(), pixel.getGreen(), blueScale));
             }
         }
     }
